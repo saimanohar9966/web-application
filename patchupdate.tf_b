@@ -1,0 +1,50 @@
+# resource "aws_ssm_patch_baseline" "amazon_linux_2" {
+#   name             = "amazon_linux_2-patch-baseline"
+#   description      = "Patch baseline for amazon_linux_2"
+#   operating_system = "AMAZON_LINUX_2"
+
+#   approval_rule {
+#     approve_after_days = "7"
+
+#     patch_filter {
+#       key    = "CLASSIFICATION"
+#       values = ["*"]
+#     }
+#   }
+# }
+
+# resource "aws_ssm_patch_group" "amazon_linux_2" {
+#     patch_group = "webapplication"
+#     baseline_id = "${aws_ssm_patch_baseline.amazon_linux_2.id}"
+# }
+
+
+
+
+
+
+
+
+#  resource "aws_ssm_patch_baseline" "example" {
+#    baseline_id      = aws_ssm_patch_baseline.example.id
+#   operating_system = "AMAZON_LINUX_2"
+#  }
+
+# resource "aws_ssm_patch_baseline" "example" {
+#   name             = "OS-patches"
+#   approved_patches = ["KB123456"]
+# }
+
+
+# This resource is defined outside of the current working Terraform state
+# So we are making a call to retrieve the ID of the resource in AWS
+# data "aws_ssm_patch_baseline" "web_servers" {
+#   owner            = "Self"
+#   name_prefix      = "webapp"
+#   operating_system = "AMAZON_LINUX_2"
+# }
+
+# resource "aws_ssm_patch_group" "web_servers" {
+#   baseline_id = data.aws_ssm_patch_baseline.front_end_servers.id
+#   patch_group = "webapplication"
+# }
